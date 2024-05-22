@@ -15,49 +15,41 @@ const GroupView = () => {
             id: 1,
             name: "Orange",
             img: "https://nextui.org/images/fruit-1.jpeg",
-            count: 50,
           },
           {
             id: 2,
             name: "Tangerine",
             img: "https://nextui.org/images/fruit-2.jpeg",
-            count: 50,
           },
           {
             id: 3,
             name: "Raspberry",
             img: "https://nextui.org/images/fruit-3.jpeg",
-            count: 50,
           },
           {
             id: 4,
             name: "Lemon",
             img: "https://nextui.org/images/fruit-4.jpeg",
-            count: 50,
           },
           {
             id: 5,
             name: "Avocado",
             img: "https://nextui.org/images/fruit-5.jpeg",
-            count: 50,
           },
           {
             id: 6,
             name: "Lemon 2",
             img: "https://nextui.org/images/fruit-6.jpeg",
-            count: 50,
           },
           {
             id: 7,
             name: "Banana",
             img: "https://nextui.org/images/fruit-7.jpeg",
-            count: 50,
           },
           {
             id: 8,
             name: "Watermelon",
             img: "https://nextui.org/images/fruit-8.jpeg",
-            count: 50,
           },
         ]}></CardList>
       </Tab>

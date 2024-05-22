@@ -12,7 +12,6 @@ model Groups {
     createdBy String
     name      String
     img       String?
-    count     Int     @default(0)
     type      String  @default("private")
 
     // createdAt DateTime @default(now())

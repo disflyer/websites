@@ -22,7 +22,7 @@ export default function CardList({ list, plus = false, onCreate }: { list: any[]
             </CardBody>
             <CardFooter className="text-small justify-between">
               <b>{item.name}</b>
-              <p className="text-default-500">count:{item.count}</p>
+              {/* <p className="text-default-500">count:{item.count}</p> */}
             </CardFooter>
           </Card>
         </Link>
