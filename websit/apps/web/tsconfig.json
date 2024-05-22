@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": false,
+    "strict": false,
     "noEmitOnError": false,
     "declarationMap": false,
     "plugins": [
