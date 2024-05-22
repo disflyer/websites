@@ -15,6 +15,15 @@ export const groupRouter = createTRPCRouter({
       };
     }),
 
+  list: protectedProcedure
+    .query(async ({ ctx }) => {
+      return ctx.db.groups.findMany({
+        where: {
+          createdBy: ctx.session.user.email as string,
+        }
+      });
+    }),
+
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1), img: z.string().optional() }))
     .mutation(async ({ ctx, input }) => {

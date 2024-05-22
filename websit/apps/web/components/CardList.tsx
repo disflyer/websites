@@ -3,7 +3,7 @@ import { Card, CardBody, CardFooter, Image, useDisclosure } from "@nextui-org/re
 import Link from "next/link";
 import CreateGroup from "./CreateGroup";
 
-export default function CardList({ list, plus = false }: { list: any[], plus?: Boolean }) {
+export default function CardList({ list, plus = false, onCreate }: { list: any[], plus?: Boolean, onCreate?: () => void }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div className="gap-4 grid grid-cols-2 sm:grid-cols-4">
@@ -15,13 +15,13 @@ export default function CardList({ list, plus = false }: { list: any[], plus?: B
                 shadow="sm"
                 radius="lg"
                 width="100%"
-                alt={item.title}
+                alt={item.name}
                 className="w-full object-cover h-[140px]"
-                src={item.img}
+                src={item.img || 'https://nextui.org/images/fruit-1.jpeg'}
               />
             </CardBody>
             <CardFooter className="text-small justify-between">
-              <b>{item.title}</b>
+              <b>{item.name}</b>
               <p className="text-default-500">count:{item.count}</p>
             </CardFooter>
           </Card>
@@ -39,7 +39,7 @@ export default function CardList({ list, plus = false }: { list: any[], plus?: B
               src="/plus.svg"
             />
           </CardBody>
-          <CreateGroup onOpenChange={onOpenChange} isOpen={isOpen}></CreateGroup>
+          <CreateGroup onOpenChange={onOpenChange} onCreate={onCreate} isOpen={isOpen}></CreateGroup>
         </Card>
       }
     </div >

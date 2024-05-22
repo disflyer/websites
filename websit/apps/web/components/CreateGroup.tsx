@@ -7,10 +7,14 @@ type Inputs = {
   name: string,
   img: string,
 };
-export default function CreateGroup({ isOpen, onOpenChange }) {
+export default function CreateGroup({ isOpen, onOpenChange, onCreate }) {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-  const { mutate } = api.group.create.useMutation();
-  const onSubmit: SubmitHandler<Inputs> = data => mutate(data);
+  const { mutateAsync } = api.group.create.useMutation();
+  const onSubmit: SubmitHandler<Inputs> = async data => {
+    await mutateAsync(data);
+    onOpenChange(false);
+    onCreate()
+  };
   return (
     <Modal
       isOpen={isOpen}
