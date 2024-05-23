@@ -1,5 +1,6 @@
 import { groupRouter } from "server/api/routers/group";
 import { createCallerFactory, createTRPCRouter } from "server/api/trpc";
+import { chunkRouter } from "./routers/chunk";
 
 /**
  * This is the primary router for your server.
@@ -8,6 +9,7 @@ import { createCallerFactory, createTRPCRouter } from "server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   group: groupRouter,
+  chunk: chunkRouter,
 });
 
 // export type definition of API

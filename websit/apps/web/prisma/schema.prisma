@@ -21,7 +21,6 @@ model Groups {
 model Chunks {
     id          String @id @default(auto()) @map("_id") @db.ObjectId
     groupId     String @db.ObjectId
-    createdBy   String
     content     String
     description String
 

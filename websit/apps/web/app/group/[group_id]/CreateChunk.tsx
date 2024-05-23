@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input } from "@nextui-org/react";
 import { api } from "trpc/react";
 
 type Inputs = {
-  name: string,
-  img: string,
+  content: string,
+  description: string,
+  groupId: string
 };
-export default function CreateGroup({ isOpen, onOpenChange, onCreate }) {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-  const { mutateAsync } = api.group.create.useMutation();
+export default function CreateChunk({ isOpen, onOpenChange, onCreate, groupId, chunk }) {
+  const { register, handleSubmit, formState: { errors }, setValue } = useForm<Inputs>({
+    defaultValues: {
+      groupId
+    }
+  });
+  const { mutateAsync } = api.chunk.create.useMutation();
   const onSubmit: SubmitHandler<Inputs> = async data => {
     await mutateAsync(data);
     onOpenChange(false);
     onCreate()
   };
+  useEffect(() => {
+    setValue("content", chunk?.content)
+    setValue("description", chunk?.description)
+  }, [chunk])
   return (
     <Modal
       isOpen={isOpen}
@@ -24,22 +33,22 @@ export default function CreateGroup({ isOpen, onOpenChange, onCreate }) {
       <ModalContent>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">Create Group</ModalHeader>
+            <ModalHeader className="flex flex-col gap-1">Create Chunk</ModalHeader>
             <form onSubmit={handleSubmit(onSubmit)}>
               <ModalBody>
                 <Input
                   autoFocus
-                  label="Group Name"
-                  placeholder="Enter your group name"
+                  label="Chunk Content"
+                  placeholder="Enter your chunk content"
                   isRequired
                   variant="bordered"
-                  {...register("name")}
+                  {...register("content")}
                 />
                 <Input
-                  label="Image URL"
-                  placeholder="Enter your image url"
+                  label="Chunk Description"
+                  placeholder="Enter your chunk description"
                   variant="bordered"
-                  {...register("img")}
+                  {...register("description")}
                 />
               </ModalBody>
               <ModalFooter>

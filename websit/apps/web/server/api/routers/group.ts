@@ -15,11 +15,23 @@ export const groupRouter = createTRPCRouter({
       };
     }),
 
-  list: protectedProcedure
-    .query(async ({ ctx }) => {
+  list: publicProcedure
+    .input(z.object({ type: z.string() }))
+    .query(async ({ ctx, input }) => {
       return ctx.db.groups.findMany({
         where: {
-          createdBy: ctx.session.user.email as string,
+          type: input.type,
+          createdBy: input.type === 'public' ? 'admin' : ctx.session?.user?.email as string,
+        }
+      });
+    }),
+
+  get: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ ctx, input }) => {
+      return ctx.db.groups.findFirst({
+        where: {
+          id: input.id
         }
       });
     }),
