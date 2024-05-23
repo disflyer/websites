@@ -60,9 +60,9 @@ export default function ChunkList({ group, chunks, onOpen, refetch, onEdit }: { 
 
   return (
     <>
-      <div className="flex flex-row-reverse">
+      <div className="flex flex-row-reverse items-center">
+        {isPublic && <Button color="secondary" className="ml-5" onPress={onOpen}>Create</Button>}
         <span className="text-gray-400">count: {chunks?.length}</span>
-        {!isPublic && <Button color="secondary" className="ml-5" onPress={onOpen}>Create</Button>}
       </div>
       <Table aria-label="Example table with custom cells">
         <TableHeader columns={columns}>

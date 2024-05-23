@@ -19,9 +19,10 @@ const Group = async ({ params }) => {
 							alt="NextUI Album Cover"
 							className="m-2 h-[180px] w-[180px] object-cover"
 						/>
-						<h2 className="font-bold text-[40px] text-right ml-10">{data.name}</h2>
+						<h2 className="hidden sm:block font-bold text-[40px] text-right ml-10">{data.name}</h2>
 					</div>
-					<div className="flex flex-col justify-center px-[20px] py-[30px]">
+					<div className="flex flex-col sm:justify-center sm:px-[20px] sm:py-[30px]">
+						<h2 className="block sm:hidden font-bold text-[40px] text-right mb-8">{data.name}</h2>
 						<Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
 							Study Chunks
 						</Button>
