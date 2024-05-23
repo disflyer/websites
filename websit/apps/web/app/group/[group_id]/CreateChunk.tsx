@@ -28,7 +28,7 @@ export default function CreateChunk({ isOpen, onOpenChange, onCreate, groupId, c
     <Modal
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      placement="bottom-center"
+      placement="top-center"
     >
       <ModalContent>
         {(onClose) => (

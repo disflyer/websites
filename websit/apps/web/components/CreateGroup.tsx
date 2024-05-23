@@ -19,7 +19,7 @@ export default function CreateGroup({ isOpen, onOpenChange, onCreate }) {
     <Modal
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      placement="bottom-center"
+      placement="top-center"
     >
       <ModalContent>
         {(onClose) => (
