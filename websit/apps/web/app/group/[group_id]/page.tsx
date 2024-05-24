@@ -6,7 +6,7 @@ import Nav from "components/Nav";
 
 const Group = async ({ params }) => {
 	const data = await api.group.get({ id: params.group_id })
-
+	const count = await api.group.getChunkCount({ id: params.group_id })
 	return (
 		<>
 			<header className="pt-[50px]">
@@ -24,7 +24,7 @@ const Group = async ({ params }) => {
 					<div className="flex flex-col sm:justify-center sm:px-[20px] sm:py-[30px]">
 						<h2 className="block sm:hidden font-bold text-[40px] text-right mb-8">{data.name}</h2>
 						<Link href={`/group/${params.group_id}/study`}>
-							<Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
+							<Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" isDisabled={count === 0}>
 								Study Chunks
 							</Button>
 						</Link>

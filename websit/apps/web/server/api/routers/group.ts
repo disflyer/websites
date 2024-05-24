@@ -48,4 +48,14 @@ export const groupRouter = createTRPCRouter({
       });
     }),
 
+  getChunkCount: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ ctx, input }) => {
+      return ctx.db.chunks.count({
+        where: {
+          id: input.id
+        }
+      });
+    }),
+
 });
