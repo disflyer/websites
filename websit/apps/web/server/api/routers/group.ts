@@ -53,7 +53,7 @@ export const groupRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       return ctx.db.chunks.count({
         where: {
-          id: input.id
+          groupId: input.id
         }
       });
     }),
