@@ -16,7 +16,7 @@ const Group = async ({ params }) => {
 						<Image
 							isBlurred
 							src={data.img || "https://nextui.org/images/fruit-1.jpeg"}
-							alt="NextUI Album Cover"
+							alt="Group Cover"
 							className="m-2 h-[180px] w-[180px] object-cover"
 						/>
 						<h2 className="hidden sm:block font-bold text-[40px] text-right ml-10">{data.name}</h2>

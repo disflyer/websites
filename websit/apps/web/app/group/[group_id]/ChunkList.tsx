@@ -8,7 +8,7 @@ import { api } from "trpc/react";
 
 
 
-export default function ChunkList({ group, chunks, onOpen, refetch, onEdit }: { group: RouterOutput['group']['get'], onOpen: () => void, chunks: RouterOutput['chunk']['list'], refetch: () => void, onEdit: (val) => void }) {
+export default function ChunkList({ isLoading, group, chunks, onOpen, refetch, onEdit }: { isLoading: boolean, group: RouterOutput['group']['get'], onOpen: () => void, chunks: RouterOutput['chunk']['list'], refetch: () => void, onEdit: (val) => void }) {
   const { mutateAsync } = api.chunk.delete.useMutation();
   const isPublic = group.type === 'public'
   const columns = isPublic ? [
@@ -72,7 +72,7 @@ export default function ChunkList({ group, chunks, onOpen, refetch, onEdit }: { 
             </TableColumn>
           )}
         </TableHeader>
-        <TableBody items={chunks || []}>
+        <TableBody items={chunks || []} isLoading={isLoading}>
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}

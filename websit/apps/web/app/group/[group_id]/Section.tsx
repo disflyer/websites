@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const Section = ({ group_id, group }) => {
   const [chunk, setChunk] = useState()
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { data: chunks, refetch } = api.chunk.list.useQuery({ groupId: group_id })
+  const { data: chunks, refetch, isLoading } = api.chunk.list.useQuery({ groupId: group_id })
 
   useEffect(() => {
     if (!isOpen) {
@@ -17,7 +17,7 @@ const Section = ({ group_id, group }) => {
   }, [isOpen])
 
   return <section className="flex flex-col gap-4 mt-12">
-    <ChunkList onOpen={onOpen} chunks={chunks} group={group} refetch={refetch} onEdit={(val) => {
+    <ChunkList isLoading={isLoading} onOpen={onOpen} chunks={chunks} group={group} refetch={refetch} onEdit={(val) => {
       onOpen()
       setChunk(val)
     }} />
