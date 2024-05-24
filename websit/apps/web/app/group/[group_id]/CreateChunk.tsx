@@ -23,7 +23,7 @@ export default function CreateChunk({ isOpen, onOpenChange, onCreate, groupId, c
   useEffect(() => {
     setValue("content", chunk?.content)
     setValue("description", chunk?.description)
-  }, [chunk])
+  }, [isOpen])
   return (
     <Modal
       isOpen={isOpen}

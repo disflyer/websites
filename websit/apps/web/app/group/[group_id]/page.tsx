@@ -1,4 +1,4 @@
-import { BreadcrumbItem, Breadcrumbs, Button, Image } from "@nextui-org/react";
+import { Button, Image, Link } from "@nextui-org/react";
 import { api } from "trpc/server";
 import Section from "./Section";
 import Nav from "components/Nav";
@@ -23,9 +23,11 @@ const Group = async ({ params }) => {
 					</div>
 					<div className="flex flex-col sm:justify-center sm:px-[20px] sm:py-[30px]">
 						<h2 className="block sm:hidden font-bold text-[40px] text-right mb-8">{data.name}</h2>
-						<Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
-							Study Chunks
-						</Button>
+						<Link href={`/group/${params.group_id}/study`}>
+							<Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
+								Study Chunks
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</header>
